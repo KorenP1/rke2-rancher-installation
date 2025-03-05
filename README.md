@@ -18,6 +18,7 @@ Specify version if needed, i have specified v1.30.4+rke2r1
 **Worker:** `curl -sfL https://get.rke2.io | INSTALL_RKE2_VERSION=<Version> INSTALL_RKE2_TYPE="agent" sh -`
   
 If worker:  
+Insert server ip and token  
 ```
 mkdir -p /etc/rancher/rke2/
 cat > /etc/rancher/rke2/config.yaml << EOF
@@ -30,12 +31,15 @@ Enable and start the service:
 **Master:** `systemctl enable rke2-server.service && systemctl start rke2-server.service`  
 **Worker:** `systemctl enable rke2-agent.service && systemctl start rke2-agent.service`
 
-With my installation i wanted to have only one ingress controller pod so i can skip installing load balancer or external reverse proxy for the cluster, i am mentioning that i am giving up on high availability. my node-name is master-0  
-`kubectl patch daemonset  -n kube-system rke2-ingress-nginx-controller --patch '{"spec": {"template": {"spec": {"nodeName": "<node-name>"}}}}'`
+With my installation i wanted to have only one ingress controller pod so i can skip installing load balancer or external reverse proxy for the cluster, i am mentioning that i am giving up on high availability.  
+Insert nodeName (e.g. master-0)
+`kubectl patch daemonset  -n kube-system rke2-ingress-nginx-controller --patch '{"spec": {"template": {"spec": {"nodeName": "<NODE_NAME>"}}}}'`
 
 ### Adding default certificate for the nginx ingress controller
+Insert certificate and key
 `kubectl create secret tls -n kube-system ingresscontroller-certificate --cert <CERTIFICATE_FILE> --key <PRIVATE_KEY_FILE>`  
 `kubectl patch daemonset rke2-ingress-nginx-controller -n kube-system --type=json -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--default-ssl-certificate=$(POD_NAMESPACE)/ingresscontroller-certificate"}]'`
 
 ### Installing Rancher
+Insert Version and Hostname
 `helm install rancher -n cattle-system --create-namespace https://releases.rancher.com/server-charts/stable/rancher-<VERSION>.tgz --set hostname=<INGRESS_HOSTNAME> --set ingress.tls.source=secret`
