@@ -28,5 +28,5 @@ EOF
 ```
 
 Enable and start the service:  
-**MASTER:** `systemctl enable rke2-server.service && systemctl start rke2-server.service`  
+**Master:** `systemctl enable rke2-server.service && systemctl start rke2-server.service`  
 **Worker:** `systemctl enable rke2-agent.service && systemctl start rke2-agent.service`
