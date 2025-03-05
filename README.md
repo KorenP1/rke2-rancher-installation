@@ -37,7 +37,8 @@ Insert nodeName (e.g. master-0)
 
 ### Adding default certificate for the nginx ingress controller
 Insert certificate and key  
-`kubectl create secret tls -n kube-system ingresscontroller-certificate --cert <CERTIFICATE_FILE> --key <PRIVATE_KEY_FILE>`  
+`kubectl create secret tls -n kube-system ingresscontroller-certificate --cert <CERTIFICATE_FILE> --key <PRIVATE_KEY_FILE>`
+
 `kubectl patch daemonset rke2-ingress-nginx-controller -n kube-system --type=json -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--default-ssl-certificate=$(POD_NAMESPACE)/ingresscontroller-certificate"}]'`
 
 ### Installing Rancher
