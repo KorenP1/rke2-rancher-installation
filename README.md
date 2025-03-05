@@ -9,7 +9,7 @@ RKE2 creates the following components (Can be edited with flags in installation 
 ### Creating Machines
 Creating servers, 1 master, at least 1 worker (Choose your prefered OS)
 
-### Installation
+### RKE2 Installation
 Use root user!  
 Edit the hostname of the servers to master-0, master-1, worker-0, worker-1...  `nmtui` OR `hostnamectl hostname <hostname>`  
 Needed commands: `apt install curl vim`  
@@ -41,6 +41,6 @@ Insert certificate and key
 
 `kubectl patch daemonset rke2-ingress-nginx-controller -n kube-system --type=json -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--default-ssl-certificate=$(POD_NAMESPACE)/ingresscontroller-certificate"}]'`
 
-### Installing Rancher
+### Rancher Installation
 Insert Version and Hostname  
 `helm install rancher -n cattle-system --create-namespace https://releases.rancher.com/server-charts/stable/rancher-<VERSION>.tgz --set hostname=<INGRESS_HOSTNAME> --set ingress.tls.source=secret`
