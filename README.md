@@ -1,5 +1,4 @@
-
-### rke2-rancher-installation
+# rke2-rancher-installation
 
 RKE2 creates the following components (Can be edited with flags in installation script):
 * CRI: containerd
@@ -9,10 +8,10 @@ RKE2 creates the following components (Can be edited with flags in installation 
 * Helm Controller (Helm Release Object)
 * More stuff
 
-# Creating Machines
+### Creating Machines
 Creating servers, 1 master, at least 1 worker (Choose your prefered OS)
 
-# Installation
+### Installation
 Use root user!  
 Edit the hostname of the servers to master-0, master-1, worker-0, worker-1...  `nmtui` OR `hostnamectl hostname <hostname>`  
 Needed commands: `apt install curl vim`  
