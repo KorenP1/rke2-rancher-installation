@@ -10,7 +10,7 @@ RKE2 creates the following components (Can be edited with flags in installation 
 * More stuff
 
 Creating servers, at least 1 master, at least 1 worker (Choose your prefered OS)  
-Edit the hostname of the servers to master-0, master-1, worker-0, worker-1...
+Edit the hostname of the servers to master-0, master-1, worker-0, worker-1...  
 `nmtui` OR `hostnamectl hostname <hostname>`
 
 Use root user!  
