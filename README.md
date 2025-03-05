@@ -29,3 +29,6 @@ EOF
 Enable and start the service:  
 **Master:** `systemctl enable rke2-server.service && systemctl start rke2-server.service`  
 **Worker:** `systemctl enable rke2-agent.service && systemctl start rke2-agent.service`
+
+With my installation i wanted to have only one ingress controller pod so i can skip installing load balancer or external reverse proxy for the cluster, i am mentioning that i am giving up on high availability. my node-name is master-0  
+`kubectl patch daemonset  -n kube-system rke2-ingress-nginx-controller --patch '{"spec": {"template": {"spec": {"nodeName": "<node-name>"}}}}'`
