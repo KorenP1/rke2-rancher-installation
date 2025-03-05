@@ -9,7 +9,7 @@ RKE2 creates the following components (Can be edited with flags in installation 
 ### Creating Machines
 Creating servers, 1 master, at least 1 worker (Choose your prefered OS)
 
-### Installation
+### Installation RKE2
 Use root user!  
 Edit the hostname of the servers to master-0, master-1, worker-0, worker-1...  `nmtui` OR `hostnamectl hostname <hostname>`  
 Needed commands: `apt install curl vim`  
@@ -33,6 +33,8 @@ Enable and start the service:
 With my installation i wanted to have only one ingress controller pod so i can skip installing load balancer or external reverse proxy for the cluster, i am mentioning that i am giving up on high availability. my node-name is master-0  
 `kubectl patch daemonset  -n kube-system rke2-ingress-nginx-controller --patch '{"spec": {"template": {"spec": {"nodeName": "<node-name>"}}}}'`
 
-### Adding default certificate for the ingress controller
+### Adding default certificate for the nginx ingress controller
 `kubectl create secret tls -n kube-system ingresscontroller-certificate --cert [CERTIFICATE_FILE] --key [PRIVATE_KEY_FILE]`  
 `kubectl patch daemonset rke2-ingress-nginx-controller -n kube-system --type=json -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--default-ssl-certificate=$(POD_NAMESPACE)/ingresscontroller-certificate"}]'`
+
+### Installing Rancher
