@@ -26,5 +26,5 @@ server: https://<server>:9345
 token: <token from server node in path /var/lib/rancher/rke2/server/node-token>
 EOF
 ```
-Enable the service: ```systemctl enable rke2-<agent/server>.service```
+Enable the service: ```systemctl enable rke2-<agent/server>.service```  
 Start the service `systemctl start rke2-<agent/server>.service`
