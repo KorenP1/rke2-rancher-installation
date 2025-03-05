@@ -3,10 +3,8 @@
 RKE2 creates the following components (Can be edited with flags in installation script):
 * CRI: containerd
 * CNI: Canal
-* CSI: local storage + longhorn (idk what is that)
 * Ingress Controller: Nginx
-* Helm Controller (Helm Release Object)
-* More stuff
+* More irrelevant stuff
 
 ### Creating Machines
 Creating servers, 1 master, at least 1 worker (Choose your prefered OS)
