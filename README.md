@@ -4,7 +4,7 @@ RKE2 creates the following components (Can be edited with flags in installation 
 * CRI: containerd
 * CNI: Canal
 * CSI: local storage + longhorn (idk what is that)
-* Ingress Controller: Traefik
+* Ingress Controller: Nginx
 * Helm Controller (Helm Release Object)
 * More stuff
 
