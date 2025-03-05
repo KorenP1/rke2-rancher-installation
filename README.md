@@ -1,5 +1,5 @@
 
-### rke2-installation
+### rke2-rancher-installation
 
 RKE2 creates the following components (Can be edited with flags in installation script):
 * CRI: containerd
