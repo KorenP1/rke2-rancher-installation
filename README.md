@@ -9,11 +9,12 @@ RKE2 creates the following components (Can be edited with flags in installation 
 * Helm Controller (Helm Release Object)
 * More stuff
 
-Creating servers, at least 1 master, at least 1 worker (Choose your prefered OS)  
-Edit the hostname of the servers to master-0, master-1, worker-0, worker-1...  
-`nmtui` OR `hostnamectl hostname <hostname>`
+# Creating Machines
+Creating servers, 1 master, at least 1 worker (Choose your prefered OS)
 
+# Installation
 Use root user!  
+Edit the hostname of the servers to master-0, master-1, worker-0, worker-1...  `nmtui` OR `hostnamectl hostname <hostname>`  
 Needed commands: `apt install curl vim`  
 Specify version if needed, i have specified v1.30.4+rke2r1  
 **Master:** `curl -sfL https://get.rke2.io | INSTALL_RKE2_VERSION=<Version> sh -`  
