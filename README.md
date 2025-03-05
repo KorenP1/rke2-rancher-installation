@@ -12,7 +12,9 @@ RKE2 creates the following components (Can be edited with flags in installation 
 Creating servers, at least 1 master, at least 1 worker (Choose your prefered OS)  
 Edit the hostname of the servers to master-0, master-1, worker-0, worker-1... (nmtui/hostnamectl)
 
-Use root user, Specify version if needed, i have specified v1.30.4+rke2r1  
+Use root user  
+`apt install curl vim`  
+Specify version if needed, i have specified v1.30.4+rke2r1  
 Master command: `curl -sfL https://get.rke2.io | INSTALL_RKE2_VERSION=<Version> sh -`  
 Worker command: `curl -sfL https://get.rke2.io | INSTALL_RKE2_VERSION=<Version> INSTALL_RKE2_TYPE="agent" sh -`
 
