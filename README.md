@@ -4,7 +4,7 @@ RKE2 creates the following components (Can be edited with flags in installation 
 * CRI: containerd
 * CNI: Canal
 * Ingress Controller: Nginx
-* ~~DOES NOT COME WITH local-provisioner CSI~~
+* ~~DOES **NOT** COME WITH local-provisioner CSI~~
 
 ### Creating Machines
 Creating servers, 1 master, at least 1 worker (Choose your prefered OS)
