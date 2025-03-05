@@ -11,6 +11,14 @@ Creating servers, 1 master, at least 1 worker (Choose your prefered OS)
 
 ### RKE2 Installation
 Use root user!  
+If your OS is using NetworkManager, you must exclude the CNI from it.  
+```
+cat > /etc/NetworkManager/conf.d/rke2-canal.conf << EOF
+[keyfile]
+unmanaged-devices=interface-name:flannel*;interface-name:cali*;interface-name:tunl*;interface-name:vxlan.calico;interface-name:vxlan-v6.calico;interface-name:wireguard.cali;interface-name:wg-v6.cali
+EOF
+systemctl restart NetworkManager.service
+```  
 Edit the hostname of the servers to master-0, master-1, worker-0, worker-1...  `nmtui` OR `hostnamectl hostname <hostname>`  
 Needed commands: `apt install curl vim htop`  
 Specify version if needed, i have specified v1.30.4+rke2r1  
