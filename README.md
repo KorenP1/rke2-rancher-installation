@@ -43,10 +43,11 @@ With my installation i wanted to have only one ingress controller pod so i can s
 Insert nodeName (e.g. master-0)
 `kubectl patch daemonset  -n kube-system rke2-ingress-nginx-controller --patch '{"spec": {"template": {"spec": {"nodeName": "<NODE_NAME>"}}}}'`
 
-### Adding default certificate for the nginx ingress controller
+### Adding default certificate for the nginx ingress controller + Setting TimeZone
 Insert certificate and key  
 `kubectl create secret tls -n kube-system ingresscontroller-certificate --cert <CERTIFICATE_FILE> --key <PRIVATE_KEY_FILE>`  
-`kubectl patch daemonset rke2-ingress-nginx-controller -n kube-system --type=json -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--default-ssl-certificate=$(POD_NAMESPACE)/ingresscontroller-certificate"}]'`
+`kubectl patch daemonset rke2-ingress-nginx-controller -n kube-system --type=json -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--default-ssl-certificate=$(POD_NAMESPACE)/ingresscontroller-certificate"}]'`  
+`kubectl patch daemonset rke2-ingress-nginx-controller -n kube-system -p '{"spec":{"template":{"spec":{"containers":[{"name":"rke2-ingress-nginx-controller","env":[{"name":"TZ","value":"Israel"}]}]}}}}'`
 
 ### CSI local-path-provisioner Installing
 Current latest version i used is 0.0.31  
