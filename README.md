@@ -57,5 +57,5 @@ Current latest version i used is 0.0.31
 
 ### Rancher Installation
 Insert Version and Hostname  
-`helm install rancher -n cattle-system --create-namespace https://releases.rancher.com/server-charts/stable/rancher-<VERSION>.tgz --set hostname=<INGRESS_HOSTNAME> --set ingress.tls.source=secret`  
+`helm install rancher -n cattle-system --create-namespace https://releases.rancher.com/server-charts/stable/rancher-<VERSION>.tgz --set hostname=<INGRESS_HOSTNAME> --set bootstrapPassword=mySecretPassword --set ingress.tls.source=secret`  
 `kubectl patch ingress rancher -n cattle-system -p '{"spec":{"tls":[]}}'`
